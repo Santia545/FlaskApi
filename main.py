@@ -73,6 +73,9 @@ def compute_best_location(friends, candidates):
         for i in sorted(range(n_candidates), key=lambda i: totals[i])
     ]
     return best, ranking, adj_list
+@app.route('/')
+def index():
+    return "Hello world"
 
 @app.route("/api/best-location", methods=["POST"])
 def best_location():
