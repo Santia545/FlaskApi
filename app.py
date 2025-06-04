@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -15,13 +15,7 @@ app = Flask(__name__)
 CORS(app) 
 ##ORS_MATRIX_URL = "https://api.openrouteservice.org/v2/matrix/driving-car"
 ORS_MATRIX_URL = "https://api.openrouteservice.org/v2/matrix/driving-car"
-@app.before_request
-def handle_preflight():
-    if request.method == "OPTIONS":
-        res = Response()
-        res.headers['X-Content-Type-Options'] = '*'
-        return res
-    
+
 def compute_best_location(friends, candidates):
     all_coords = [ [f['lng'], f['lat']] for f in friends ] + [ [c['lng'], c['lat']] for c in candidates ]
     n_friends = len(friends)
