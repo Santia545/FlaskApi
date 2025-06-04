@@ -91,5 +91,5 @@ def best_location():
         return jsonify({"best": best, "ranking": ranking, "graph": adj_list})
     except Exception as exc:
         return jsonify({"error": str(exc)}), 500
-
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
